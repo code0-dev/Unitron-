@@ -1,0 +1,165 @@
+<DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>unitron</title>
+
+<link rel="stylesheet" href="unitron.css">
+</head>
+
+<body>
+
+<h1><img src="images/unitron-logo.png" height="100px" /></h1>
+
+<nav class="nav">
+<ul>
+<li><a href="#">mass</a></li>
+<li><a href="#">temperature</a></li>
+<li><a href="#">binary</a></li>
+<li><a href="#">time</a></li>
+<li><a href="#">length</a></li>
+<li><a href="#">area</a></li>
+<li><a href="#">volume</a></li>
+</ul>
+</nav>
+
+<main class="main-content">
+
+<div class="container" name="mass">
+<h2 class="heading" id="mass-heading">g to kg</h2>
+<div class="input-cont">
+<input type="number" id="mass-input" class="input" placeholder="0" min="0" />
+<select id="mass-input-units" class="select">
+<option value="g">g</option>
+<option value="kg">kg</option>
+</select>
+</div>
+<div class="output-cont">
+<output class="output" placeholder="0" id="mass-output">0</output>  
+</div>
+</div>
+
+
+
+<div class="container" name="temperature">
+<h2 class="heading" id="temperature-heading">k to <sup>o</sup>C</h2>
+<div class="input-cont">
+<input type="number" id="temperature-input" class="input" placeholder="0" min="0" />
+<select id="temperature-input-units" class="select">
+<option value="k">k</option>
+<option value="c"><sup>o</sup>C</option>
+</select>
+</div>
+<div class="output-cont">
+<output class="output" placeholder="0" id="temperature-output">0</output>  
+</div>
+</div>
+
+
+<div class="container" name="binary">
+  <h2 class="heading" id="binary-heading">Bin to Dec</h2>
+  <div class="input-cont">
+    <input type="number" id="binary-input" class="input" placeholder="0" min="0" />
+    <select id="binary-input-units" class="select">
+      <option value="Bin">Bin</option>
+      <option value="Dec">Dec</option>
+    </select>
+  </div>
+  <div class="output-cont">
+    <output class="output" id="binary-output">0</output>
+  </div>
+</div>
+
+
+<div class="container" name="time">
+<h2 class="heading" id="time-heading">hrs to min</h2>
+<div class="input-cont">
+<input type="number" id="time-input" class="input" placeholder="0" min="0" />
+<select id="time-input-units" class="select">
+<option value="hrs">hrs</option>
+<option value="min">min</option>
+<option value="sec">sec</option>
+</select>
+</div>
+<div class="output-cont">
+<output class="output" placeholder="0" id="time-output">0</output>  
+<select id="time-output-units" class="select">
+<option value="min">min</option>
+<option value="hrs">hrs</option>
+<option value="sec">sec</option>
+</select>
+</div>
+</div>
+
+
+
+<div class="container" name="length">
+<h2 class="heading" id="length-heading">cm to M</h2>
+<div class="input-cont">
+<input type="number" id="length-input" class="input" placeholder="0" min="0" />
+<select id="length-input-units" class="select">
+<option value="cm">cm</option>
+<option value="M">M</option>
+<option value="km">km</option>
+</select>
+</div>
+<div class="output-cont">
+<output class="output" placeholder="0" id="length-output">0</output>  
+<select id="length-output-units" class="select">
+<option value="M">M</option>
+<option value="cm">cm</option>
+<option value="km">km</option>
+</select>
+</div>
+</div>
+
+
+
+<div class="container" name="area">
+<h2 class="heading" id="area-heading">cm<sup>2</sup> to m<sup>2</sup></h2>
+<div class="input-cont">
+<input type="number" id="area-input" class="input" placeholder="0" min="0" />
+<select id="area-input-units" class="select">
+<option value="cm2">cm<sup>2</sup></option>
+<option value="m2">m<sup>2</sup></option>
+<option value="km2">km<sup>2</sup></option>
+</select>
+</div>
+<div class="output-cont">
+<output class="output" placeholder="0" id="area-output">0</output>  
+<select id="area-output-units" class="select">
+<option value="m2">m<sup>2</sup></option>
+<option value="cm2">cm<sup>2</sup></option>
+<option value="km2">km<sup>2</sup></option>
+</select>
+</div>
+</div>
+
+
+<div class="container" name="volume">
+<h2 class="heading" id="volume-heading">cm<sup>3</sup> to m<sup>3</sup></h2>
+<div class="input-cont">
+<input type="number" id="volume-input" class="input" placeholder="0" min="0" />
+<select id="volume-input-units" class="select">
+<option value="cm3">cm<sup>3</sup></option>
+<option value="m3">m<sup>3</sup></option>
+<option value="km3">km<sup>3</sup></option>
+</select>
+</div>
+<div class="output-cont">
+<output class="output" placeholder="0" id="volume-output">0</output>  
+<select id="volume-output-units" class="select">
+<option value="m3">m<sup>3</sup></option>
+<option value="cm3">cm<sup>3</sup></option>
+<option value="km3">km<sup>3</sup></option>
+</select>
+</div>
+</div>
+
+</main>
+
+<script src="unitron.js"></script>
+
+</body>
+</html>
