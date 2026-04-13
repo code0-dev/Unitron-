@@ -10,13 +10,15 @@
 
 <body>
 
-<h1><img src="images/unitron-logo.png" height="100px" /></h1>
+<header class="logo-header">
+  <img src="./images/unitron-logo.png" alt="Unitron" class="logo-img" />
+</header>
 
 <nav class="nav">
 <ul>
-<li><a href="#">mass</a></li>
+<li><a href="#" class="active-link">mass</a></li>
 <li><a href="#">temperature</a></li>
-<li><a href="#">binary</a></li>
+<li><a href="#">number-system</a></li>
 <li><a href="#">time</a></li>
 <li><a href="#">length</a></li>
 <li><a href="#">area</a></li>
@@ -57,17 +59,25 @@
 </div>
 
 
-<div class="container" name="binary">
-  <h2 class="heading" id="binary-heading">Bin to Dec</h2>
+<div class="container" name="number-system">
+  <h2 class="heading" id="number-system-heading">Bin to Dec</h2>
   <div class="input-cont">
-    <input type="number" id="binary-input" class="input" placeholder="0" min="0" />
-    <select id="binary-input-units" class="select">
+    <input type="text" id="number-system-input" class="input" placeholder="0" min="0" />
+    <select id="number-system-input-units" class="select">
       <option value="Bin">Bin</option>
       <option value="Dec">Dec</option>
+      <option value="Octal">Octal</option>
+      <option value="Hex">Hex</option>
     </select>
   </div>
   <div class="output-cont">
-    <output class="output" id="binary-output">0</output>
+    <output class="output" id="number-system-output">0</output>
+    <select id="number-system-output-units" class="select">
+      <option value="Dec">Dec</option>
+      <option value="Bin">Bin</option>
+      <option value="Octal">Octal</option>
+      <option value="Hex">Hex</option>
+    </select>
   </div>
 </div>
 

@@ -8,10 +8,13 @@ convertorLinks.forEach(link => link.addEventListener("click", () => {
     containters.forEach(containter => {
         if (link.textContent === containter.getAttribute("name")) {
             convertorLinks.forEach(otherLink => {
-                otherLink.style.color = "#ccc";
+                otherLink.classList.remove("active-link");
             })
-            link.style.color = "rgb(0, 224, 255)";
+            link.classList.add("active-link");
             containter.style.display = "flex";
+            containter.classList.remove("container-enter");
+            void containter.offsetWidth; // reflow to restart animation
+            containter.classList.add("container-enter");
         }
         else if (containter.style.display !== "none") {
             containter.style.display = "none";
@@ -83,33 +86,86 @@ function convertTemperature() {
 }
 
 
-//binary
-const binaryHeading = document.getElementById("binary-heading")
-const binaryInput = document.getElementById("binary-input");
-const binaryInputUnits = document.getElementById("binary-input-units");
-const binaryOutput = document.getElementById("binary-output");
+//number system
+const numberSystemHeading = document.getElementById("number-system-heading")
+const numberSystemInput = document.getElementById("number-system-input");
+const numberSystemInputUnits = document.getElementById("number-system-input-units");
+const numberSystemOutput = document.getElementById("number-system-output");
+const numberSystemOutputUnits = document.getElementById("number-system-output-units");
 
-binaryInput.addEventListener("input", convertBinary)
-binaryInputUnits.addEventListener("change", changeBinaryUnits)
 
-function changeBinaryUnits() {
-    if (binaryInputUnits.value === "Bin") binaryHeading.textContent = "Bin to Dec";
-    else binaryHeading.textContent = "Dec to Bin";
-    convertBinary();
+numberSystemInput.addEventListener("keypress", e => {
+    if (numberSystemHeading.textContent.startsWith("Hex")) {
+        if (!/[0-9a-fA-F]/.test(e.key)) {
+            e.preventDefault();
+        }
+    } else {
+        if (!/[0-9]/.test(e.key)) {
+            e.preventDefault();
+        }
+    }
+})
+
+numberSystemInputUnits.addEventListener("change", changeNumberSystemUnits);
+numberSystemOutputUnits.addEventListener("change", changeNumberSystemUnits);
+numberSystemInput.addEventListener("input", convertNumberSystem);
+
+
+function changeNumberSystemUnits() {
+    numberSystemHeading.textContent = `${numberSystemInputUnits.value} to ${numberSystemOutputUnits.value}`;
+    convertNumberSystem();
 }
 
-function convertBinary() {
-    const inputValue = Number(binaryInput.value.trim().toLowerCase());
-    if (Math.sign(inputValue) < 0) {
-        alert("only enter numbers greater than 0");
-        binaryInput.value = "";
-        return;
+function convertNumberSystem() {
+
+    let inputValue;
+    if (numberSystemHeading.textContent.startsWith("Hex")) {
+        numberSystemInput.value = numberSystemInput.value.replace(/[^0-9a-fA-F]/g, "");
+        inputValue = numberSystemInput.value.trim().toLowerCase() == ""? 0: numberSystemInput.value.trim().toLowerCase();
+    } else {
+        numberSystemInput.value = numberSystemInput.value.replace(/[^0-9]/g, "");
+        inputValue = Number(numberSystemInput.value.trim().toLowerCase());
+        if (Math.sign(inputValue) < 0) {
+            alert("only enter numbers greater than 0");
+            numberSystemInput.value = "";
+            numberSystemOutput.value = "";
+            return;
+        }
     }
     
-    switch (binaryInputUnits.value) {
-        case 'Bin': binaryOutput.value = parseInt(inputValue, 2).toString(10);
+    switch (numberSystemHeading.textContent) {
+        case 'Bin to Bin': numberSystemOutput.value = inputValue;
             break;
-        default: binaryOutput.value = parseInt(inputValue, 10).toString(2);
+        case 'Bin to Dec': numberSystemOutput.value = parseInt(inputValue, 2).toString(10);
+            break;
+        case 'Bin to Octal': numberSystemOutput.value = parseInt(inputValue, 2).toString(8);
+            break;
+        case 'Bin to Hex': numberSystemOutput.value = parseInt(inputValue, 2).toString(16);
+            break;
+        case 'Dec to Bin': numberSystemOutput.value = parseInt(inputValue, 10).toString(2);
+            break;
+        case 'Dec to Dec': numberSystemOutput.value = inputValue;
+            break;
+        case 'Dec to Octal': numberSystemOutput.value = parseInt(inputValue, 10).toString(8);
+            break;
+        case 'Dec to Hex': numberSystemOutput.value = parseInt(inputValue, 10).toString(16);
+            break;
+        case 'Octal to Bin': numberSystemOutput.value = parseInt(inputValue, 8).toString(2);
+            break;
+        case 'Octal to Dec': numberSystemOutput.value = parseInt(inputValue, 8).toString(10);
+            break;
+        case 'Octal to Octal': numberSystemOutput.value = inputValue;
+            break;
+        case 'Octal to Hex': numberSystemOutput.value = parseInt(inputValue, 8).toString(16);
+            break;
+        case 'Hex to Bin': numberSystemOutput.value = parseInt(inputValue, 16).toString(2);
+            break;
+        case 'Hex to Dec': numberSystemOutput.value = parseInt(inputValue, 16).toString(10);
+            break;
+        case 'Hex to Octal': numberSystemOutput.value = parseInt(inputValue, 16).toString(8);
+            break;
+        case 'Hex to Hex': numberSystemOutput.value = inputValue;
+            break;
     }
 }
 
